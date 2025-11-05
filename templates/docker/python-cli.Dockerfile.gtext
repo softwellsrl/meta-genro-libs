@@ -1,0 +1,53 @@
+# We-Birds Template - Docker Python CLI
+# Version: 1.0.0
+# Last Updated: 2025-11-05
+#
+# Variables:
+#   - python_version: Python version (e.g., "3.12")
+#   - tool_name: CLI command name (e.g., "gtext", "smartswitch", "tryfly")
+#   - install_dev: Install dev dependencies (true/false, default: false)
+
+FROM python:{{python_version}}-slim
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Create non-root user
+RUN useradd -m -u 1000 appuser
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements and install dependencies
+COPY requirements.txt .
+{{#if install_dev}}
+COPY requirements-dev.txt .
+RUN pip install --no-cache-dir -r requirements.txt -r requirements-dev.txt
+{{else}}
+RUN pip install --no-cache-dir -r requirements.txt
+{{/if}}
+
+# Copy application code
+COPY . .
+
+# Install the tool in editable mode (for development) or as package
+{{#if install_dev}}
+RUN pip install -e .
+{{else}}
+RUN pip install .
+{{/if}}
+
+# Fix ownership
+RUN chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Set entrypoint to the CLI tool
+ENTRYPOINT ["{{tool_name}}"]
+
+# Default command (show help)
+CMD ["--help"]
