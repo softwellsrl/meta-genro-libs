@@ -38,7 +38,7 @@ All Genro-Libs tools are **public repositories** in the `genropy` organization:
 |------|-----------|------|--------|-------------|
 | gtext | [genropy/gtext](https://github.com/genropy/gtext) | [gtext](https://pypi.org/project/gtext/) | ✅ Active | Text transformation with pluggable extensions |
 | smartswitch | [genropy/smartswitch](https://github.com/genropy/smartswitch) | [smartswitch](https://pypi.org/project/smartswitch/) | ✅ Active | Rule-based function dispatch |
-| smartasync | [genropy/smartasync](https://github.com/genropy/smartasync) | ⏳ Pending | 🔨 Alpha | Unified sync/async API decorator with automatic context detection |
+| smartasync | [genropy/smartasync](https://github.com/genropy/smartasync) | ⏳ Pending | 🔧 Beta | Unified sync/async API decorator with automatic context detection |
 | smpub | [genropy/smpub](https://github.com/genropy/smpub) | [smpub](https://pypi.org/project/smpub/) | 🔨 Alpha | CLI/API framework based on SmartSwitch |
 
 ---
