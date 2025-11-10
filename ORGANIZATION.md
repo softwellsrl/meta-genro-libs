@@ -1,4 +1,4 @@
-# We-Birds Ecosystem Organization
+# Genro-Libs Ecosystem Organization
 
 **Version**: 1.0.0
 **Last Updated**: 2025-11-05
@@ -8,7 +8,7 @@
 
 ## Overview
 
-We-Birds is a collection of general-purpose Python developer tools that work beautifully together. This document describes the organizational structure and standards for the entire ecosystem.
+Genro-Libs is a collection of general-purpose Python developer tools that work beautifully together. This document describes the organizational structure and standards for the entire ecosystem.
 
 ---
 
@@ -16,7 +16,7 @@ We-Birds is a collection of general-purpose Python developer tools that work bea
 
 ### Meta-Repository (Private)
 
-**Location**: `softwell/we-birds` (this repository)
+**Location**: `softwellsrl/meta-genro-libs` (this repository)
 
 **Purpose**:
 - Governance and coordination
@@ -32,13 +32,14 @@ We-Birds is a collection of general-purpose Python developer tools that work bea
 
 ### Tool Repositories (Public)
 
-All We-Birds tools are **public repositories** in the `genropy` organization:
+All Genro-Libs tools are **public repositories** in the `genropy` organization:
 
 | Tool | Repository | PyPI | Status | Description |
 |------|-----------|------|--------|-------------|
 | gtext | [genropy/gtext](https://github.com/genropy/gtext) | [gtext](https://pypi.org/project/gtext/) | ✅ Active | Text transformation with pluggable extensions |
 | smartswitch | [genropy/smartswitch](https://github.com/genropy/smartswitch) | [smartswitch](https://pypi.org/project/smartswitch/) | ✅ Active | Rule-based function dispatch |
-| tryfly | [genropy/tryfly](https://github.com/genropy/tryfly) | - | ⏳ Pre-Alpha | Run GitHub Actions locally |
+| smartasync | [genropy/smartasync](https://github.com/genropy/smartasync) | ⏳ Pending | 🔨 Alpha | Unified sync/async API decorator with automatic context detection |
+| smpub | [genropy/smpub](https://github.com/genropy/smpub) | [smpub](https://pypi.org/project/smpub/) | 🔨 Alpha | CLI/API framework based on SmartSwitch |
 
 ---
 
@@ -46,14 +47,14 @@ All We-Birds tools are **public repositories** in the `genropy` organization:
 
 ```
 genro_ng/
-├── we-birds/                      # Meta-repository (softwell/we-birds)
+├── genro-libs/                      # Meta-repository (softwellsrl/meta-genro-libs)
 │   ├── CLAUDE.md                  # Central AI instructions
 │   ├── ORGANIZATION.md            # This file
 │   ├── README.md                  # Meta-repo overview
 │   ├── CONTRIBUTING.md            # Contribution guidelines
 │   │
 │   ├── docs/                      # Documentation
-│   │   ├── philosophy.md          # We-Birds principles
+│   │   ├── philosophy.md          # Genro-Libs principles
 │   │   ├── governance.md          # Decision process
 │   │   └── integration.md         # How tools integrate
 │   │
@@ -69,7 +70,7 @@ genro_ng/
 │   └── sub-projects/              # Git-ignored local clones
 │       ├── gtext/                 # genropy/gtext clone
 │       ├── smartswitch/           # genropy/smartswitch clone
-│       └── tryfly/                # genropy/tryfly clone
+│       └── smpub/                 # genropy/smpub clone
 │
 └── ... (other projects)
 ```
@@ -78,7 +79,7 @@ genro_ng/
 
 ## Project Standards
 
-All We-Birds tools follow these standards:
+All Genro-Libs tools follow these standards:
 
 ### Repository Structure
 
@@ -87,7 +88,7 @@ tool-name/
 ├── README.md                  # Project overview
 ├── LICENSE                    # MIT License
 ├── pyproject.toml            # Project configuration
-├── CLAUDE.md                 # References we-birds/CLAUDE.md
+├── CLAUDE.md                 # References genro-libs/CLAUDE.md
 │
 ├── src/
 │   └── tool_name/            # Source code
@@ -109,10 +110,10 @@ tool-name/
 
 ### Required Files
 
-- ✅ `README.md` - Clear overview with We-Birds badge
+- ✅ `README.md` - Clear overview with Genro-Libs badge
 - ✅ `LICENSE` - MIT License
 - ✅ `pyproject.toml` - Standard Python project config
-- ✅ `CLAUDE.md` - References central we-birds/CLAUDE.md
+- ✅ `CLAUDE.md` - References central genro-libs/CLAUDE.md
 - ✅ `.gitignore` - Standard Python ignores
 - ✅ `tests/` directory - Test suite with pytest
 
@@ -131,7 +132,7 @@ authors = [{name = "Genropy Team", email = "info@genropy.org"}]
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.10"
-keywords = ["we-birds", "developer-tools", ...]
+keywords = ["genro-libs", "developer-tools", ...]
 
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -156,7 +157,7 @@ dev = [
 Homepage = "https://github.com/genropy/tool-name"
 Repository = "https://github.com/genropy/tool-name"
 Issues = "https://github.com/genropy/tool-name/issues"
-"We-Birds" = "https://github.com/softwell/we-birds"
+"Genro-Libs" = "https://github.com/softwellsrl/meta-genro-libs"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/tool_name"]
@@ -166,9 +167,9 @@ packages = ["src/tool_name"]
 
 All tool READMEs include:
 
-1. **We-Birds Badge** (at top):
+1. **Genro-Libs Badge** (at top):
    ```markdown
-   [![We-Birds](https://img.shields.io/badge/We--Birds-Family-blue)](https://github.com/softwell/we-birds)
+   [![Genro-Libs](https://img.shields.io/badge/We--Birds-Family-blue)](https://github.com/softwellsrl/meta-genro-libs)
    ```
 
 2. **Quick Start** - Installation and basic usage
@@ -180,15 +181,15 @@ All tool READMEs include:
 ### Naming Conventions
 
 **Tool Names**:
-- ✅ Clean names: `gtext`, `smartswitch`, `tryfly`
-- ❌ No prefixes: `we-birds-gtext`, `wb-smartswitch`
+- ✅ Clean names: `gtext`, `smartswitch`
+- ❌ No prefixes: `genro-libs-gtext`, `wb-smartswitch`
 
 **Python Packages**:
 - Match tool name: `import gtext`, `import smartswitch`
 - Use snake_case for modules: `from gtext.extensions import *`
 
 **GitHub Topics**:
-- `we-birds` (required)
+- `genro-libs` (required)
 - `developer-tools` (required)
 - Tool-specific tags
 
@@ -196,22 +197,14 @@ All tool READMEs include:
 
 ## Dependencies
 
-### Internal Dependencies (We-Birds → We-Birds)
+### Internal Dependencies (Genro-Libs → Genro-Libs)
 
-**We-Birds tools can freely depend on each other**:
+**Genro-Libs tools can freely depend on each other**:
 
 - ✅ Same ecosystem
 - ✅ Same maintainer
 - ✅ Same quality standards
 - ✅ No concerns about "too many dependencies"
-
-**Example**:
-```toml
-# tryfly/pyproject.toml
-dependencies = [
-    "smartswitch>=0.1.0",  # ✅ Internal We-Birds dependency
-]
-```
 
 **Benefits**:
 - Code reuse
@@ -233,15 +226,15 @@ Keep external dependencies minimal:
 
 ### Adding a New Tool
 
-1. **Discuss in we-birds issues** - Gather feedback
+1. **Discuss in genro-libs issues** - Gather feedback
 2. **Create repository** - In `genropy` organization (public)
-3. **Use templates** - From `we-birds/templates/project/`
+3. **Use templates** - From `genro-libs/templates/project/`
 4. **Add to ORGANIZATION.md** - Update this table
-5. **Link to meta-repo** - Add We-Birds badge and URL
+5. **Link to meta-repo** - Add Genro-Libs badge and URL
 
 ### Updating Shared Templates
 
-1. **Modify in we-birds/templates/**
+1. **Modify in genro-libs/templates/**
 2. **Update version/date in template**
 3. **Run sync script** - `scripts/sync-templates.sh`
 4. **Test in one tool** - Verify changes work
@@ -251,7 +244,7 @@ Keep external dependencies minimal:
 
 When a change affects multiple tools:
 
-1. **Document in we-birds issues** - Create tracking issue
+1. **Document in genro-libs issues** - Create tracking issue
 2. **Plan order** - Dependencies first, dependents second
 3. **Test together** - Clone all affected tools to sub-projects/
 4. **Release sequentially** - Wait for PyPI propagation
@@ -351,7 +344,7 @@ jobs:
 
 ### GitHub Issues
 
-- **we-birds issues**: Cross-project discussions, proposals, standards
+- **genro-libs issues**: Cross-project discussions, proposals, standards
 - **Tool issues**: Tool-specific bugs, features, questions
 
 ### GitHub Discussions
@@ -362,7 +355,7 @@ jobs:
 
 ### Private Communication
 
-- Softwell team uses we-birds repository for internal coordination
+- Softwell team uses genro-libs repository for internal coordination
 - Public discussions happen in tool repositories
 
 ---
@@ -395,7 +388,7 @@ All tools follow **Semantic Versioning** (SemVer):
 
 ## License
 
-All We-Birds tools use the **MIT License**:
+All Genro-Libs tools use the **MIT License**:
 
 - Permissive
 - Commercial use allowed
@@ -404,17 +397,17 @@ All We-Birds tools use the **MIT License**:
 
 ---
 
-## Adding Tools to We-Birds
+## Adding Tools to Genro-Libs
 
-Not every tool belongs in We-Birds. Consider:
+Not every tool belongs in Genro-Libs. Consider:
 
 1. **General purpose** - Useful beyond one specific project
 2. **High quality** - Well-tested, documented, maintained
-3. **Aligned philosophy** - Fits We-Birds principles
+3. **Aligned philosophy** - Fits Genro-Libs principles
 4. **Team capacity** - Can we maintain it long-term?
 
 **Process**:
-1. Open issue in `we-birds` repository
+1. Open issue in `genro-libs` repository
 2. Discuss proposal with community
 3. Get approval from maintainers
 4. Follow standardization checklist
@@ -442,7 +435,7 @@ Not every tool belongs in We-Birds. Consider:
 
 ## Future Plans
 
-See [GitHub Issues](https://github.com/softwell/we-birds/issues) for:
+See [GitHub Issues](https://github.com/softwellsrl/meta-genro-libs/issues) for:
 - Proposed new tools
 - Cross-project improvements
 - Template updates
